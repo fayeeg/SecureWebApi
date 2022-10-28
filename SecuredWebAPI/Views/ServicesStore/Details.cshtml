@@ -1,0 +1,38 @@
+﻿@model SecuredWebApi.Models.APIManagerVM
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="content table-responsive table-full-width">
+    <table class="table table-striped">
+        <thead>
+        <th>ID</th>
+        <th>API Key</th>
+        <th>Service Name</th>
+        <th>Hits</th>
+        <th>Status</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.RowNo</td>
+                <td>@Model.APIKey</td>
+                <td>@Model.ServiceName</td>
+                <td>@Model.Hits</td>
+
+                @if (string.Equals(Model.Status, "A"))
+                {
+                    <td><button type="submit" onclick="DeactivateService('@Model.ServiceID')" class="btn btn-info btn-fill btn-wd">Deactivate</button></td>
+                }
+                else if (string.Equals(Model.Status, "D"))
+                {
+                    <td><button type="submit" onclick="ReActivateService('@Model.ServiceID')" class="btn btn-info btn-fill btn-wd">Re-Activate</button></td>
+                }
+                else
+                {
+                     <td>No Service Activated</td>
+                }
+
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+﻿@model SecuredWebApi.Models.GenerateKeysVM
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Generate Key</h4>
+                </div>
+                <div class="content">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            @Html.ValidationSummary()
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Service</label>
+
+                                    @Html.DropDownListFor(m => m.ServiceID, new SelectList(Model.ListServices, "ServiceID", "ServiceName"), new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(m => m.ServiceID)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Max Request</label>
+
+                                    @Html.DropDownListFor(m => m.HitsID, new SelectList(Model.ListHits, "HitsID", "HitsDisplay"), new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(m => m.HitsID)
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-fill btn-wd">Create API Key</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

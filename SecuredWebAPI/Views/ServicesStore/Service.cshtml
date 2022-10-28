@@ -1,0 +1,35 @@
+﻿@model List<SecuredWebApi.Models.ServicesTB>
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<h2>Services</h2>
+<div class="row">
+
+    @foreach (var service in Model)
+    {
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div class="icon-big icon-info text-center">
+                                <i class="ti-settings-alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="numbers">
+                                @service.ServiceName API
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <hr />
+                        <div class="stats">
+                            <i class="ti-reload"></i> <a target="_blank" href="/ServicesStore/Details/@service.ServiceID/@service.ServiceName">Service Link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
