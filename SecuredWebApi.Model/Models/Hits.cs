@@ -13,7 +13,7 @@ namespace SecuredWebApi.Models
         [Key]
         public long HitsID { get; set; }
         public long Hits { get; set; }
-        public string HitsDisplay { get; set; }
+        public string? HitsDisplay { get; set; }
         
     }
 }

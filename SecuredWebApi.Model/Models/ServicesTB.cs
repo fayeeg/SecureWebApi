@@ -12,8 +12,8 @@ namespace SecuredWebApi.Models
     {
         [Key]
         public int ServiceID { get; set; }
-        public string ServiceName { get; set; }
+        public string? ServiceName { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public string APIName { get; set; }
+        public string? APIName { get; set; }
     }
 }

@@ -12,10 +12,10 @@ namespace SecuredWebApi.Models
     {
         [Key]
         public long MusicID { get; set; }
-        public string MusicLabel { get; set; }
-        public string MovieName { get; set; }
-        public string Lyricist { get; set; }
-        public string Singer { get; set; }
-        public string SongName { get; set; }
+        public string? MusicLabel { get; set; }
+        public string? MovieName { get; set; }
+        public string? Lyricist { get; set; }
+        public string? Singer { get; set; }
+        public string? SongName { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace SecuredWebApi.Models
 {
     public class ConnectionStrings
     {
-        public string DatabaseConnection { get; set; }
+        public string? DatabaseConnection { get; set; }
     }
 }

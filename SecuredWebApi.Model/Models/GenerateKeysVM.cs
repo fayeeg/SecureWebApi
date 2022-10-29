@@ -16,9 +16,9 @@ namespace SecuredWebApi.Models
         [Required(ErrorMessage = "Choose Max Request")]
         public int? HitsID { get; set; }
 
-        public List<HitsTB> ListHits { get; set; }
-        public List<ServicesTB> ListServices { get; set; }
+        public List<HitsTB>? ListHits { get; set; }
+        public List<ServicesTB>? ListServices { get; set; }
 
-        public string APIKey { get; set; }
+        public string? APIKey { get; set; }
     }
 }

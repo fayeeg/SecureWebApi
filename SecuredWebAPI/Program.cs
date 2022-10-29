@@ -21,11 +21,11 @@ builder.Services.AddSession();
 //builder.Services.AddDistributedMemoryCache();
 // Add services to the container.
 //builder.Services.AddMvc();
-//builder.Services.AddRazorPages();
-builder.Services.AddMvc(options => options.EnableEndpointRouting = false)
-        .AddSessionStateTempDataProvider();
-//builder.Services.AddControllersWithViews();
 
+//builder.Services.AddMvc(options => options.EnableEndpointRouting = false)
+//        .AddSessionStateTempDataProvider();
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 
 
@@ -91,19 +91,20 @@ else
 app.UseStaticFiles();
 app.UseSession();
 //app.UseMvcWithDefaultRoute();
-//app.UseRouting();
-app.UseMiddleware<ApiKeyValidatorsMiddleware>();
+app.UseRouting();
+//app.UseMiddleware<ApiKeyValidatorsMiddleware>();
+app.UseMiddleware<ApiKeyHeaderMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    //app.UseSwaggerUI();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty;
-    });
+    app.UseSwaggerUI();
+    //app.UseSwaggerUI(options =>
+    //{
+    //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    //    options.RoutePrefix = string.Empty;
+    //});
 }
 
 //app.UseMvc(routes =>
@@ -124,8 +125,40 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.UseMvc();
-//app.MapControllers();
+//app.UseMvc();
+
+//app.UseEndpoints(endpoints =>
+//{
+
+//    //endpoints.MapControllers();
+//    endpoints.MapRazorPages();
+
+//});
+
+//app.MapControllerRoute(
+//    name: "Servicedefault",
+//    pattern: "{controller=Login}/{action=Login}/{ServiceID}/{ServiceName}");
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Login}/{action=Login}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "Servicedefault",
+      pattern: "{controller=Login}/{action=Login}/{ServiceID}/{ServiceName}");
+
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Login}/{action=Login}/{id?}");
+
+});        
+
+
+
+app.MapControllers();
 //app.MapRazorPages();
 
 app.Run();
